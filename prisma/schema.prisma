@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Holder {
+  id        Int      @id @default(autoincrement())
+  address   String   @unique
+  fdpCount  Int      @default(0)
+  adpCount  Int      @default(0)
+  updatedAt DateTime @updatedAt
+}
+
+model SnapshotMeta {
+  id          Int      @id @default(1)
+  lastFetched DateTime @default(now())
+}
